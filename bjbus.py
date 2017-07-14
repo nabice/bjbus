@@ -94,7 +94,7 @@ def real_bus(lineid):
     for i in range(2):
         real_infos = False
         try:
-            real_infos = json.loads(urllib2.urlopen("http://bjgj.aibang.com:8899/bus.php?id="+lineid+"&no=3&datatype=json&encrypt=1").read())["root"]["data"]["bus"]
+            real_infos = json.loads(urllib2.urlopen("http://transapp.btic.org.cn:8512/ssgj/bus.php?id="+lineid+"&no=3&datatype=json&encrypt=1").read())["root"]["data"]["bus"]
         except urllib2.URLError as err:
             if isinstance(err.reason, socket.timeout):
                 continue
