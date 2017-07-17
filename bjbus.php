@@ -48,7 +48,7 @@ foreach($ids as $id){
     }
 }
 if(count($lineids)){
-    $cmd = '/bin/grep -P "(^'.implode("|", $lineids).') " /home/nabice/etc/busallline';
+    $cmd = '/bin/grep -P "^('.implode("|", $lineids).') " /home/nabice/etc/busallline';
     $output = array();
     exec($cmd, $output);
     foreach($output as $line){
