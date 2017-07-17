@@ -32,7 +32,7 @@ def get_lines_info():
     opener = urllib2.build_opener()
     opener.addheaders = [("cid", "1")]
     index_file = join(ETC_PATH, "busindex.xml")
-    newindex = opener.open("http://mc.aibang.com/aiguang/bjgj.c?m=checkUpdate&version=1").read()
+    newindex = opener.open("http://transapp.btic.org.cn:8512/ssgj/v1.0.0/checkUpdate?version=1").read()
     if os.path.exists(index_file):
         oldmd5 = hashlib.md5(open(join(ETC_PATH, "busindex.xml"), 'rb').read()).hexdigest()
         if oldmd5 == hashlib.md5(newindex).hexdigest():
@@ -50,7 +50,7 @@ def get_lines_info():
             old_version = ET.fromstring(open(old_line_file).read()).find("busline/version").text
             if version == old_version:
                 continue
-        businfo = opener.open("http://mc.aibang.com/aiguang/bjgj.c?m=update&id="+lineid).read()
+        businfo = opener.open("http://transapp.btic.org.cn:8512/ssgj/v1.0.0/update?id="+lineid).read()
         print "Saving", lineid
         save_bus_info(lineid, businfo)
 
